@@ -92,7 +92,8 @@ vector<size_t> MaxElementMP(vector<size_t>* A, vector<size_t>* B) {
 #pragma omp for private(i) reduction(+:sum)
 			for (i = 0; i < (*A).size(); i++)
 			{
-				sum += result[i] = max((*A)[i], (*B)[i]);
+				 result[i] = max((*A)[i], (*B)[i]);
+				 sum = sum + result[i];
 			}
 		}
 	}
