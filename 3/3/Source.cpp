@@ -13,8 +13,8 @@ void MaxElementMP(vector<size_t>* A, vector<size_t>* B);
 void main() {
 
 	srand(time(NULL));
-
-	size_t size = 10000000;
+	
+	size_t size = 50000000;
 	vector<size_t> A(size), B(size), C, C_MP;
 
 	double start;
@@ -78,6 +78,7 @@ vector<size_t> MaxElement(vector<size_t>* A, vector<size_t>* B) {
 }
 
 void PrintVector(vector<size_t> vec) {
+	cout << "\n";
 	for (size_t i : vec)
 		cout << i << ' ';
 	cout << "\n";
