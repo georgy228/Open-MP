@@ -91,7 +91,7 @@ void PrintVector(vector<size_t> vec) {
 	int max_ = 0;
 	if ((*A).size() == (*B).size()) {
 		//result.resize((*A).size());
-#pragma omp parallel shared(A,B)private(result)
+#pragma omp parallel shared(A,B)private(result,max_)
 		{
 #pragma omp for private(i) reduction(+:sum)
 			for (i = 0; i < (*A).size(); i++)
