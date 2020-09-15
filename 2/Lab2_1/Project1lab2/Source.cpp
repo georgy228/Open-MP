@@ -4,10 +4,10 @@
 #include<iostream>
 
 const int NMAX = 20000;
-const int LIMIT = 100000000;
+const int LIMIT = 1000000000;
 void main()
 {
-
+	//check threads working------------------------------
 	int th_num, num_ths, max_th;
 	max_th = omp_get_max_threads();
 	std::cout << "Max threads=" << max_th << "\n";
@@ -18,7 +18,7 @@ void main()
 		num_ths = omp_get_num_threads();
 		printf("I am ready %d from %d \n", th_num, num_ths);
 	}
-
+	//end check threads working----------------------------
 
 	int i, j;
 	float sum;
@@ -48,7 +48,7 @@ void main()
 		sum = 0;
 		for (j = 0; j < NMAX; j++)
 			sum += a[i][j];
-		//printf("Сумма элементов строки %d равна %f\n", i, sum);
+		printf("Сумма элементов строки %d равна %f\n", i, sum);
 	}
 	end = omp_get_wtime();
 	} /* Завершение параллельного фрагмента */
