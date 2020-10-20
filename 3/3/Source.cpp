@@ -2,7 +2,6 @@
 #include<stdio.h>
 #include<iostream>
 #include<time.h>
-#include<vector>
 #include<algorithm> 
 using namespace std;
 void Init(size_t* A, size_t size);
@@ -13,7 +12,7 @@ void main() {
 
 	srand(time(NULL));
 	
-	size_t size = 10,C, C_MP;
+	size_t size = 10000000,C, C_MP;
 	size_t* A = new size_t[size];
 	size_t * B = new size_t[size];
 
