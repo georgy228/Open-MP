@@ -20,7 +20,7 @@ void main() {
 	double end;
 
 
-	//проверка работы потоков--------------------------------------
+	//Check OpenMP working--------------------------------------
 	size_t th_num, num_ths, max_th;
 	max_th = omp_get_max_threads();
 	printf_s("Max threads= %zu\n",max_th) ;
@@ -36,24 +36,24 @@ void main() {
 	Init(A,size);
 	Init(B,size);
 
-	start = omp_get_wtime();			// запуск отсчета времени
-	C = MaxElement(A,B,size);		   // запуск функции вычисления максимума (реализация без многопоточности)
-	end = omp_get_wtime();			  // остановка отсчета времени
-	printf_s("C = %zu\n", C);		 // вывод результата функции - сумма элементов массива С, где C[i]=Max(A[i],B[i])
-	printf("Work took %f seconds\n", end - start); // вывод затраченного времени
+	start = omp_get_wtime();			// start time counter
+	C = MaxElement(A,B,size);		   // start func  (without OpenMP)
+	end = omp_get_wtime();			  // stop time counter
+	printf_s("C = %zu\n", C);		 // print func`s result - summ array`s elements, where C[i]=Max(A[i],B[i])
+	printf("Work took %f seconds\n", end - start); // print time result
 
 
-	start = omp_get_wtime();		   // запуск отсчета времени
-	C_MP = MaxElementMP(A, B,size);   // запуск функции вычисления максимума (реализация c использованием OpenMP)
-	end = omp_get_wtime();			 // остановка отсчета времени
-	printf_s("C_MP = %zu\n", C_MP); // вывод результата функции - сумма элементов массива С, где C[i]=Max(A[i],B[i])
-	printf("Work took %f seconds MP\n", end - start);// вывод затраченного времени
+	start = omp_get_wtime();		   // start time counter
+	C_MP = MaxElementMP(A, B,size);   // start func  (with OpenMP)
+	end = omp_get_wtime();			 // stop time counter
+	printf_s("C_MP = %zu\n", C_MP); // print func`s result - sum array`s elements, where C[i]=Max(A[i],B[i])
+	printf("Work took %f seconds MP\n", end - start);// print time result
 	
 
 	system("Pause");
 }
 
-// Заполняет массив А размером size случайными числами
+// init A[size]
 void Init(size_t* A, size_t size) { 
 	for (size_t i = 0; i < size; i++)
 	{
@@ -61,7 +61,7 @@ void Init(size_t* A, size_t size) {
 	}
 }
 
-// Находит C[i]=Max(A[i],B[i]), возвращает сумму элементов С. (Без OpenMP)
+// find C[i]=Max(A[i],B[i]), return element`s sum. (without openmp)
 size_t MaxElement(size_t* A, size_t* B,size_t size) {
 	size_t *C=new size_t[size];
 	size_t sum = 0;
@@ -73,7 +73,7 @@ size_t MaxElement(size_t* A, size_t* B,size_t size) {
 	return sum;
 }
 
-// Выводит содержимое масиива arr размером size
+// print array
 void PrintArray(size_t*arr,size_t size) {
 	printf_s("\n");
 	for (size_t i = 0; i < size ; i++)
@@ -83,7 +83,7 @@ void PrintArray(size_t*arr,size_t size) {
 	printf_s("\n");
 }
 
-// Находит C[i]=Max(A[i],B[i]), возвращает сумму элементов С. (С OpenMP)
+// find C[i]=Max(A[i],B[i]), return element`s sum. (with openmp)
  size_t MaxElementMP(size_t* A, size_t* B,size_t size) {
 	
 	size_t* C = new size_t[size];
