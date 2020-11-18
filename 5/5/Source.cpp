@@ -71,26 +71,26 @@ void main() {
 	printf("Work took %f seconds MP reduction\n\n", end - start);// print time result
 
 	start = omp_get_wtime();		   // start time counter
-	C = MaxElementSections(A, B, size);   // start func  (with OpenMP)
+	C = MaxElementSections(A, B, size);   // start func  (with Sections inside for )
 	end = omp_get_wtime();			 // stop time counter
 	printf_s("C = %zu\n", C); // print func`s result - sum array`s elements, where C[i]=Max(A[i],B[i])
 	printf("Work took %f seconds SECTIONS inside for loop \n\n", end - start);// print time result
 
 
 	start = omp_get_wtime();		   // start time counter
-	C = MaxElement2Sections(A, B, size);   // start func  (with OpenMP)
+	C = MaxElement2Sections(A, B, size);   // start func  (with 2 sections)
 	end = omp_get_wtime();			 // stop time counter
 	printf_s("C = %zu\n", C); // print func`s result - sum array`s elements, where C[i]=Max(A[i],B[i])
 	printf("Work took %f seconds  with 2 SECTIONS \n\n", end - start);// print time result
 
 	start = omp_get_wtime();		   // start time counter
-	C = MaxElement4Sections(A, B, size);   // start func  (with OpenMP)
+	C = MaxElement4Sections(A, B, size);   // start func  (with 4 sections)
 	end = omp_get_wtime();			 // stop time counter
 	printf_s("C = %zu\n", C); // print func`s result - sum array`s elements, where C[i]=Max(A[i],B[i])
 	printf("Work took %f seconds  with 4 SECTIONS \n\n", end - start);// print time result
 
 	start = omp_get_wtime();		   // start time counter
-	C = MaxElement8Sections(A, B, size);   // start func  (with OpenMP)
+	C = MaxElement8Sections(A, B, size);   // start func  (with 8 sections)
 	end = omp_get_wtime();			 // stop time counter
 	printf_s("C = %zu\n", C); // print func`s result - sum array`s elements, where C[i]=Max(A[i],B[i])
 	printf("Work took %f seconds  with 8 SECTIONS \n\n", end - start);// print time result
