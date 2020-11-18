@@ -1,7 +1,7 @@
 #include<omp.h>
-#include<stdio.h>
+//#include<stdio.h>
 #include<iostream>
-#include<time.h>
+#include<ctime>
 #include<algorithm> 
 using namespace std;
 void Init(size_t* A, size_t size);
