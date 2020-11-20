@@ -201,7 +201,7 @@ size_t MaxElement4Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 #pragma omp section
@@ -210,7 +210,7 @@ size_t MaxElement4Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 
@@ -220,7 +220,7 @@ size_t MaxElement4Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 
@@ -230,7 +230,7 @@ size_t MaxElement4Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 		}
@@ -254,7 +254,7 @@ size_t MaxElement8Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 #pragma omp section
@@ -263,7 +263,7 @@ size_t MaxElement8Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 
@@ -273,7 +273,7 @@ size_t MaxElement8Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 
@@ -283,7 +283,7 @@ size_t MaxElement8Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 #pragma omp section
@@ -292,7 +292,7 @@ size_t MaxElement8Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 #pragma omp section
@@ -301,7 +301,7 @@ size_t MaxElement8Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 #pragma omp section
@@ -310,7 +310,7 @@ size_t MaxElement8Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 #pragma omp section
@@ -319,7 +319,7 @@ size_t MaxElement8Sections(size_t* A, size_t* B, size_t size)
 				{
 					max_ = max(A[i], B[i]);
 					C[i] = max_;
-					sum += max_;
+					sum = sum + max_;
 				}
 			}
 		}
