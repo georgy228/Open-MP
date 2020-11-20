@@ -37,7 +37,7 @@ I am ready 2 from 12
 ------
 Далее идет уведомление о окончании инициализации массива и потраченное время:
 ```
-ork took 0.356796 seconds to init
+Work took 0.356796 seconds to init
 Work took 0.183144 seconds to init (SECTIONS)
 ```
 Видно, что инициализация массива с применением *sections* происходит быстрее.
