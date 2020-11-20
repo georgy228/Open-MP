@@ -8,7 +8,6 @@ void Init(size_t* A, size_t size);
 void PrintArray(size_t* arr, size_t size);
 size_t MaxElement(size_t* A, size_t* B, size_t size);
 size_t MaxElementMP(size_t* A, size_t* B, size_t size);
-size_t MaxElementSections(size_t* A, size_t* B, size_t size);
 size_t MaxElement2Sections(size_t* A, size_t* B, size_t size);
 size_t MaxElement4Sections(size_t* A, size_t* B, size_t size);
 size_t MaxElement8Sections(size_t* A, size_t* B, size_t size);
@@ -17,7 +16,7 @@ void main()
 {
 	srand(time(NULL));
 
-	size_t size = 11000000, C, C_MP;
+	size_t size = 1000000, C, C_MP;
 	size_t* A = new size_t[size];
 	size_t* B = new size_t[size];
 
@@ -46,12 +45,15 @@ void main()
 
 	//first way use sections. approximate difference ~ 0.1 sec
 	start = omp_get_wtime();
-#pragma omp sections
+#pragma omp parallel
 	{
+#pragma omp sections
+		{
 #pragma omp section
-		Init(A, size);
+			Init(A, size);
 #pragma omp section
-		Init(B, size);
+			Init(B, size);
+		}
 	}
 	end = omp_get_wtime();
 	printf("Work took %f seconds to init (SECTIONS)\n\n", end - start);
@@ -70,11 +72,6 @@ void main()
 	printf_s("C_MP = %zu\n", C_MP); // print func`s result - sum array`s elements, where C[i]=Max(A[i],B[i])
 	printf("Work took %f seconds MP reduction\n\n", end - start); // print time result
 
-	start = omp_get_wtime(); // start time counter
-	C = MaxElementSections(A, B, size); // start func  (with Sections inside for )
-	end = omp_get_wtime(); // stop time counter
-	printf_s("C = %zu\n", C); // print func`s result - sum array`s elements, where C[i]=Max(A[i],B[i])
-	printf("Work took %f seconds SECTIONS inside for loop \n\n", end - start); // print time result
 
 
 	start = omp_get_wtime(); // start time counter
@@ -120,28 +117,7 @@ size_t MaxElement(size_t* A, size_t* B, size_t size)
 	return sum;
 }
 
-size_t MaxElementSections(size_t* A, size_t* B, size_t size)
-{
-	size_t* C = new size_t[size];
-	size_t sum = 0;
-	size_t max_ = 0;
 
-	for (size_t i = 0; i < size; i++)
-	{
-#pragma omp sections
-		{
-			max_ = max(A[i], B[i]);
-#pragma omp section
-			C[i] = max_;
-#pragma omp section
-			sum += max_;
-		}
-	}
-
-
-	//PrintArray(C, size);
-	return sum;
-}
 
 // print array
 void PrintArray(size_t* arr, size_t size)
