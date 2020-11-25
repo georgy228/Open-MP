@@ -10,7 +10,7 @@ size_t MaxElement(size_t* A, size_t* B, size_t size);
 size_t MaxElementMP(size_t* A, size_t* B, size_t size);
 size_t MaxElementMPLock(size_t* A, size_t* B, size_t size);
 void UseBarrier(size_t* A, size_t* B, size_t size);
-void main(void)
+int main(void)
 {
 	srand(time(NULL));
 
@@ -67,7 +67,7 @@ void main(void)
 	printf("Work took %f seconds BARRIER\n\n", end - start); // print time result
 	
 	system("Pause");
-	//return 1;
+	return 0;
 }
 
 // init A[size]
