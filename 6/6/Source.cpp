@@ -39,7 +39,7 @@ void main(void)
 	Init(A, size);
 	Init(B, size);
 	end = omp_get_wtime();
-	printf("\n\nWork took %f seconds to init\n", end - start);
+	printf("\n\nWork took %f seconds to init\n\n", end - start);
 
 
 	start = omp_get_wtime(); // start time counter
@@ -92,8 +92,7 @@ size_t MaxElement(size_t* A, size_t* B, size_t size)
 }
 
 // find C[i]=Max(A[i],B[i]), return element`s sum. (with openmp reduction)
-size_t MaxElementMP(size_t* A, size_t* B, size_t size)
-{
+size_t MaxElementMP(size_t* A, size_t* B, size_t size){
 	size_t* C = new size_t[size];
 	size_t sum = 0;
 	int i;
@@ -119,13 +118,8 @@ size_t MaxElementMPLock(size_t* A, size_t* B, size_t size)
 	size_t max_ = 0;
 	omp_lock_t lock;
 	omp_init_lock(&lock);
-	size_t th_num, num_ths;
-#pragma omp parallel shared(A,B,C,sum)private(max_,i,th_num,num_ths)
-	{
-		//th_num = omp_get_thread_num();
-		//num_ths = omp_get_num_threads();
-		//printf("I am ready %zu from %zu \n", th_num, num_ths);
-		
+#pragma omp parallel shared(A,B,C,sum)private(max_,i)
+	{		
 #pragma omp for 
 		for (i = 0; i < size; i++)
 		{
